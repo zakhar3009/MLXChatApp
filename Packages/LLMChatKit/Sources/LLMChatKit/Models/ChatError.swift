@@ -1,5 +1,5 @@
 //
-//  ChatErrors.swift
+//  ChatError.swift
 //  LLMChatKit
 //
 //  Created by Zakhar Litvinchuk on 01.06.2026.
