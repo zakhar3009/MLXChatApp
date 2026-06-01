@@ -8,17 +8,27 @@
 import SwiftUI
 
 struct ChatView: View {
-  let chat: Chat
+  @Bindable var viewModel: ConversationViewModel
 
   var body: some View {
-    ScrollView {
-      LazyVStack(spacing: 12) {
-        ForEach(chat.messages) { message in
-          MessageView(message: message)
+    VStack(spacing: 0) {
+      ScrollView {
+        LazyVStack(spacing: 12) {
+          ForEach(viewModel.chat.messages) { message in
+            MessageView(message: message)
+          }
         }
+        .padding(20)
       }
-      .padding(20)
+
+      ChatInputView(
+        text: $viewModel.inputText,
+        isGenerating: viewModel.isGenerating,
+        canSend: viewModel.canSend,
+        onSend: viewModel.sendMessage,
+        onStop: viewModel.stopGeneration
+      )
     }
-    .navigationTitle(chat.title)
+    .navigationTitle(viewModel.chat.title)
   }
 }
