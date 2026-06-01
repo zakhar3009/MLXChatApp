@@ -15,8 +15,9 @@ public protocol ChatEngine {
   func createSession() async throws -> SessionID
   func deleteSession(with id: SessionID) async
   
-  func streamResponse(
-    for prompt: String,
+  func sendMessage(
+    _ message: String,
     in sessionId: SessionID
   ) async throws -> AsyncThrowingStream<String, Error>
+  func stopGeneration(in sessionId: SessionID) async
 }
