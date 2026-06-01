@@ -11,13 +11,22 @@ struct MessageView: View {
   let message: Message
 
   var body: some View {
-    Text(message.text)
-      .textSelection(.enabled)
+    textContent
       .padding(10)
       .background(backgroundColor)
       .clipShape(RoundedRectangle(cornerRadius: 8))
       .frame(maxWidth: 500, alignment: alignment)
       .frame(maxWidth: .infinity, alignment: alignment)
+  }
+
+  @ViewBuilder
+  private var textContent: some View {
+    if message.status == .streaming {
+      StreamingTextView(text: message.text)
+    } else {
+      Text(message.text)
+        .textSelection(.enabled)
+    }
   }
 
   private var alignment: Alignment {
