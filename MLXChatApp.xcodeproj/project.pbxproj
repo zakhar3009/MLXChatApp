@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		7EDB120B2FCD949900EBB9E7 /* LLMChatKit in Frameworks */ = {isa = PBXBuildFile; productRef = 7EDB120A2FCD949900EBB9E7 /* LLMChatKit */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		7EEB927D2FCD6BB0000397E6 /* MLXChatApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MLXChatApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
@@ -23,6 +27,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7EDB120B2FCD949900EBB9E7 /* LLMChatKit in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -65,6 +70,7 @@
 			);
 			name = MLXChatApp;
 			packageProductDependencies = (
+				7EDB120A2FCD949900EBB9E7 /* LLMChatKit */,
 			);
 			productName = MLXChatApp;
 			productReference = 7EEB927D2FCD6BB0000397E6 /* MLXChatApp.app */;
@@ -94,6 +100,9 @@
 			);
 			mainGroup = 7EEB92742FCD6BB0000397E6;
 			minimizedProjectReferenceProxies = 1;
+			packageReferences = (
+				7EDB12092FCD949900EBB9E7 /* XCLocalSwiftPackageReference "Packages/LLMChatKit" */,
+			);
 			preferredProjectObjectVersion = 77;
 			productRefGroup = 7EEB927E2FCD6BB0000397E6 /* Products */;
 			projectDirPath = "";
@@ -331,6 +340,20 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCLocalSwiftPackageReference section */
+		7EDB12092FCD949900EBB9E7 /* XCLocalSwiftPackageReference "Packages/LLMChatKit" */ = {
+			isa = XCLocalSwiftPackageReference;
+			relativePath = Packages/LLMChatKit;
+		};
+/* End XCLocalSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		7EDB120A2FCD949900EBB9E7 /* LLMChatKit */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = LLMChatKit;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 7EEB92752FCD6BB0000397E6 /* Project object */;
 }
