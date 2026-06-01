@@ -35,4 +35,16 @@ struct Message: Identifiable, Hashable {
     self.text = text
     self.status = status
   }
+
+  func replacing(
+    text: String? = nil,
+    status: Status? = nil
+  ) -> Message {
+    Message(
+      id: id,
+      role: role,
+      text: text ?? self.text,
+      status: status ?? self.status
+    )
+  }
 }

@@ -10,7 +10,7 @@ import Foundation
 struct Chat: Identifiable, Hashable {
   let id: UUID
   let title: String
-  let messages: [Message]
+  var messages: [Message]
 
   init(
     id: UUID = UUID(),
