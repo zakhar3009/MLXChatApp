@@ -34,7 +34,7 @@ final class ChatListViewModel {
     self.chatEngine = chatEngine
     let initial = ConversationViewModel(
       chatEngine: chatEngine,
-      chat: Chat(title: "New Chat")
+      chat: Chat()
     )
     self.conversations = [initial]
     selectedChatId = initial.id
@@ -60,7 +60,7 @@ final class ChatListViewModel {
   func addConversation() {
     let conversation = ConversationViewModel(
       chatEngine: chatEngine,
-      chat: Chat(title: "New Chat")
+      chat: Chat()
     )
     conversations.append(conversation)
     selectedChatId = conversation.id

@@ -9,16 +9,17 @@ import Foundation
 
 struct Chat: Identifiable, Hashable {
   let id: UUID
-  let title: String
   var messages: [Message]
+
+  var title: String {
+    messages.first { $0.role == .user }?.text ?? "New Chat"
+  }
 
   init(
     id: UUID = UUID(),
-    title: String,
     messages: [Message] = []
   ) {
     self.id = id
-    self.title = title
     self.messages = messages
   }
 }

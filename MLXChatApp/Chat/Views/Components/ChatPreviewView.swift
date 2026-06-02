@@ -40,6 +40,10 @@ struct ChatPreviewView: View {
   }
 
   private var previewText: String {
-    chat.messages.first?.text ?? "No messages"
+    guard let lastMessage = chat.messages.last else {
+      return "No messages"
+    }
+
+    return lastMessage.text.isEmpty ? "Generating..." : lastMessage.text
   }
 }
