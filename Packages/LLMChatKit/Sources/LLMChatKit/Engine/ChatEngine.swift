@@ -19,5 +19,4 @@ public protocol ChatEngine {
     _ message: String,
     in sessionId: SessionID
   ) async throws -> AsyncThrowingStream<String, Error>
-  func stopGeneration(in sessionId: SessionID) async
 }

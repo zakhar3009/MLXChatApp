@@ -49,7 +49,7 @@ public actor LLMChatService: ChatEngine {
   }
 
   public func deleteSession(with id: SessionID) async {
-    await stopGeneration(in: id)
+    cancelGeneration(in: id)
     sessions.removeValue(forKey: id)
   }
 
@@ -83,7 +83,7 @@ public actor LLMChatService: ChatEngine {
     }
   }
 
-  public func stopGeneration(in sessionId: SessionID) async {
+  private func cancelGeneration(in sessionId: SessionID) {
     generationTasks[sessionId]?.cancel()
     generationTasks.removeValue(forKey: sessionId)
   }

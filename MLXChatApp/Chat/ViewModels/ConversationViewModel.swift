@@ -49,10 +49,6 @@ final class ConversationViewModel: Identifiable {
 
   func stopGeneration() {
     sendTask?.cancel()
-    guard let sessionId else { return }
-    Task {
-      await chatEngine.stopGeneration(in: sessionId)
-    }
   }
 
   func cleanup() {

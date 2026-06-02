@@ -25,6 +25,7 @@ struct MessageView: View {
       StreamingTextView(text: message.text)
     } else {
       Text(message.text)
+        .font(.body)
         .textSelection(.enabled)
     }
   }
