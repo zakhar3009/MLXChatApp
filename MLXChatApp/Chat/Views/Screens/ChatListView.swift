@@ -22,18 +22,26 @@ struct ChatListView: View {
   }
   
   private var sidebarView: some View {
-    List(viewModel.conversations, selection: $viewModel.selectedChatId) { conversation in
-      chatRow(for: conversation)
-        .tag(conversation.id)
-    }
-    .navigationTitle("Chats")
-    .toolbar {
-      ToolbarItem(placement: .primaryAction) {
-        Button(action: viewModel.addConversation) {
-          Label("New Chat", systemImage: "plus")
-        }
+    VStack(spacing: 0) {
+      newChatButton
+
+      List(viewModel.conversations, selection: $viewModel.selectedChatId) { conversation in
+        chatRow(for: conversation)
+          .tag(conversation.id)
       }
     }
+    .navigationTitle("Chats")
+  }
+
+  private var newChatButton: some View {
+    Button(action: viewModel.addConversation) {
+      Label("New chat", systemImage: "square.and.pencil")
+        .frame(maxWidth: .infinity, alignment: .leading)
+    }
+    .buttonStyle(.plain)
+    .padding(.horizontal, 12)
+    .padding(.vertical, 10)
+    .contentShape(Rectangle())
   }
 
   private func chatRow(for conversation: ConversationViewModel) -> some View {
