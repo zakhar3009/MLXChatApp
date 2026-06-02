@@ -24,11 +24,13 @@ struct StreamingTextView: NSViewRepresentable {
   }
 
   func sizeThatFits(_ proposal: ProposedViewSize, nsView: NSTextView, context: Context) -> CGSize? {
-    guard let width = proposal.width else { return nil }
+    guard let width = proposal.width,
+          let container = nsView.textContainer,
+          let layout = nsView.layoutManager
+    else { return nil }
     nsView.string = text
-    nsView.textContainer?.containerSize = CGSize(width: width, height: .greatestFiniteMagnitude)
-    nsView.layoutManager?.ensureLayout(for: nsView.textContainer!)
-    let height = nsView.layoutManager?.usedRect(for: nsView.textContainer!).height ?? 0
-    return CGSize(width: width, height: height)
+    container.containerSize = CGSize(width: width, height: .greatestFiniteMagnitude)
+    layout.ensureLayout(for: container)
+    return CGSize(width: width, height: layout.usedRect(for: container).height)
   }
 }

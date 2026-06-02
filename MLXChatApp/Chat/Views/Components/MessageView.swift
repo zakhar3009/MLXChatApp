@@ -23,6 +23,12 @@ struct MessageView: View {
   private var textContent: some View {
     if message.status == .streaming {
       StreamingTextView(text: message.text)
+    } else if message.status == .failed {
+      Label(
+        message.text.isEmpty ? "Generation failed" : message.text,
+        systemImage: "exclamationmark.circle"
+      )
+      .foregroundStyle(.red)
     } else {
       Text(message.text)
         .font(.body)
