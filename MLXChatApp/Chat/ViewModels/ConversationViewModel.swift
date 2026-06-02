@@ -21,7 +21,7 @@ final class ConversationViewModel: Identifiable {
   }
 
   var canSend: Bool {
-    !inputText.isEmpty && !isGenerating
+    !filteredInput.isEmpty && !isGenerating
   }
   
   private let chatEngine: any ChatEngine
@@ -73,8 +73,10 @@ final class ConversationViewModel: Identifiable {
         chat.messages[assistantIndex] = chat.messages[assistantIndex].replacing(text: responseText)
       }
       chat.messages[assistantIndex] = chat.messages[assistantIndex].replacing(status: .complete)
+    } catch is CancellationError {
+      markLastAssistantMessage(status: .complete)
     } catch {
-      markLastAssistantMessageFailed()
+      markLastAssistantMessage(status: .failed)
     }
   }
 
@@ -87,11 +89,11 @@ final class ConversationViewModel: Identifiable {
     return newSessionId
   }
 
-  private func markLastAssistantMessageFailed() {
+  private func markLastAssistantMessage(status: Message.Status) {
     guard
       let lastIndex = chat.messages.indices.last,
       chat.messages[lastIndex].role == .assistant
     else { return }
-    chat.messages[lastIndex] = chat.messages[lastIndex].replacing(status: .failed)
+    chat.messages[lastIndex] = chat.messages[lastIndex].replacing(status: status)
   }
 }

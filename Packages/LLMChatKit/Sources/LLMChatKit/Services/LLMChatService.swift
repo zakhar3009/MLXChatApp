@@ -110,6 +110,7 @@ public actor LLMChatService: ChatEngine {
       do {
         return try await task.value
       } catch {
+        modelState = .notLoaded
         throw ChatError.modelLoadFailed(underlying: error)
       }
 
